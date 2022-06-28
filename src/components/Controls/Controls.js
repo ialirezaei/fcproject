@@ -18,18 +18,19 @@ const Controls = (props) => {
     return (
         <div className="controls">
             <div>
-                <p>
+                <p className="totalPriceP">
                     TotalPrice :{props.price}
                 </p>
             </div>
             {
                 products.map((product, index) => {
                     return (
-                        <Builder key={index} title={product.title} type={product.type} 
+                        <Builder key={index} title={product.title} type={product.type}
                             add={() => props.productAdd(product.type)} remove={() => props.productRemove(product.type)} />
                     )
                 })
             }
+            <button className="orderBtn" onClick={props.order}>Order</button>
         </div>
 
     )
