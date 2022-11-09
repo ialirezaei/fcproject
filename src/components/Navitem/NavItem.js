@@ -1,11 +1,11 @@
 import React from 'react';
 import './Navitem.css';
-
+import {Link } from 'react-router-dom'
 
 const Navitem = (props) => {
     return (
-        <li ClassName="nav-item">
-            <a href={props.link}>{props.name}</a>
+        <li className="nav-item">
+            <Link to={props.link}>{props.name}</Link>
         </li>
     )
 }

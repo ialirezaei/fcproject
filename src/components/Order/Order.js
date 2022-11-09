@@ -27,7 +27,7 @@ const Order = (props) => {
             <p>Total Price: {props.totalPrice}</p>
             <hr></hr>
             <p>Continue?</p>
-            <Button btnType="success" click={props.continue}>yes</Button>
+            <Button btnType="success" click={props.continue} >yes</Button>
             <Button btnType="danger" click={props.cancel}>no</Button>
             <hr></hr>
 

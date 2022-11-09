@@ -6,6 +6,8 @@ import Modal from "../../components/UI/Modal/Modal";
 import Order from "../../components/Order/Order";
 import axios from '../../axios-order'
 import Loader from "../../components/UI/Loader/Loader";
+import { Navigate, useNavigate } from "react-router-dom";
+
 const prices = {
     product1: 52,
     product2: 42,
@@ -14,10 +16,10 @@ const prices = {
     product5: 12,
     product6: 32,
     product7: 92,
-
 }
 
 class Shopping extends React.Component {
+
     state = {
         products: null,
         totalPrice: 0,
@@ -26,6 +28,7 @@ class Shopping extends React.Component {
     }
 
     componentDidMount() {
+
         axios.get('/prouduct.json').
             then((res) => {
                 console.log(res);
@@ -72,29 +75,29 @@ class Shopping extends React.Component {
         this.setState({
             purchased: false,
         })
-
     }
     purchasedContinueHandler = () => {
-        this.setState({ loading: true })
-        const order = {
-            products: this.state.products,
-            price: this.state.price,
-            customer: {
-                name: 'ali',
-                email: 'ali@mail.com'
-            }
-        }
+        useNavigate("/success");
+        // this.setState({ loading: true })
+        // const order = {
+        //     products: this.state.products,
+        //     price: this.state.price,
+        //     customer: {
+        //         name: 'ali',
+        //         email: 'ali@mail.com'
+        //     }
+        // }
 
-        axios.post('/orders.json', order)
-            .then((res) => {
-                console.log(res);
-                this.setState({ loading: false, purchased: false })
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({ loading: false, purchased: false })
+        // axios.post('/orders.json', order)
+        //     .then((res) => {
+        //         console.log(res);
+        //         this.setState({ loading: false, purchased: false })
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //         this.setState({ loading: false, purchased: false })
 
-            })
+        //     })
     }
     render() {
         let control = <Loader />
